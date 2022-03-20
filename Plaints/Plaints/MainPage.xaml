@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Plaints.MainPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="ButtonBackgroundColor">#ebf9f6</Color>
+            <Color x:Key="TextColor">#181d2a</Color>
+            
+            <Style TargetType="Label" x:Key="HeaderFontLight">
+                <Setter Property="FontFamily" Value="LoraRegular"/>
+                <Setter Property="FontSize" Value="28"/>
+                <Setter Property="TextColor" Value="#181d2a"></Setter>
+            </Style>
+
+            <Style TargetType="Label" x:Key="HeaderFontMedium">
+                <Setter Property="FontFamily" Value="LoraMedium"/>
+                <Setter Property="FontSize" Value="28"/>
+                <Setter Property="TextColor" Value="#181d2a"></Setter>
+            </Style>
+
+            <Style x:Key="ButtonStyle" TargetType="ImageButton">
+                <Setter Property="BackgroundColor" Value="#ebf9f6"/>
+                <Setter Property="CornerRadius" Value="10"/>
+            </Style>
+            
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <AbsoluteLayout>
+        <Label Text="Brown fox"></Label>
+        <ImageButton 
+                     Source="menu_icon" 
+                     AbsoluteLayout.LayoutBounds="20,20,48,48" 
+                     BackgroundColor="White" 
+                     Padding="10"/>
+        <ImageButton Source="favorite_empty"                     
+                     AbsoluteLayout.LayoutBounds="340,20,48,48"
+                     Style="{StaticResource ButtonStyle}"
+                     Padding="10"/>
+
+        <StackLayout AbsoluteLayout.LayoutBounds="20,100,340,100">
+
+            <Label Style="{StaticResource HeaderFontLight}" Text="Choose your new friend"/>
+            <Label Style="{StaticResource HeaderFontMedium}" Text="green friend" />
+        </StackLayout>
+
+        
+        <BoxView AbsoluteLayout.LayoutBounds="20,200,300,48"
+                 BackgroundColor="{StaticResource ButtonBackgroundColor}"
+                 CornerRadius="10"            
+                 />
+
+        <ImageButton AbsoluteLayout.LayoutBounds="20,200,48,48" 
+                     BackgroundColor="Transparent"
+                     Style="{StaticResource ButtonStyle}"
+                     Padding="14"
+                     Source="search_icon"
+                     />
+
+        <Entry AbsoluteLayout.LayoutBounds="60, 200, 240, 48"
+               Placeholder="Search"/>
+
+        <ImageButton AbsoluteLayout.LayoutBounds="340,200,48,48" 
+                     Style="{StaticResource ButtonStyle}"
+                     Padding="14"
+                     Source="settings_icon"
+                     />
+        
+    </AbsoluteLayout>
+
+</ContentPage>
