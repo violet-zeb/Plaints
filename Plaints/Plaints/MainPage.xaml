@@ -1,8 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Plaints.ViewModels"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="Plaints.MainPage">
 
+    <ContentPage.BindingContext>
+        <viewmodels:MainViewModel/>
+    </ContentPage.BindingContext>
+    
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="ButtonBackgroundColor">#ebf9f6</Color>
@@ -68,7 +75,38 @@
                      Padding="14"
                      Source="settings_icon"
                      />
-        
+        <ScrollView Background="yellow"
+                    AbsoluteLayout.LayoutBounds="20, 300, .9, 1"
+                    AbsoluteLayout.LayoutFlags="SizeProportional"/>
+
+        <FlexLayout BindableLayout.ItemsSource="{Binding Products}"
+                    Direction="Column"
+                    HeightRequest="930"
+                    HorizontalOptions="Center"
+                    Wrap="Wrap">
+
+            <BindableLayout.ItemTemplate>
+
+                <DataTemplate>
+                    <pancake:PancakeView CornerRadius="10" 
+                                         Margin="10"
+                                         HeightRequest="270"
+                                         WidthRequest="160">
+                        <Grid>
+                        <BoxView 
+                                 BackgroundColor="{Binding HeroColor}"
+                                 />
+                    </Grid>
+                    </pancake:PancakeView>
+                </DataTemplate>
+
+            </BindableLayout.ItemTemplate>
+            
+        </FlexLayout>
+
     </AbsoluteLayout>
+    
 
 </ContentPage>
+
+    
