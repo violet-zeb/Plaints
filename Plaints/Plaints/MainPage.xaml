@@ -79,30 +79,7 @@
                     AbsoluteLayout.LayoutBounds="20, 300, .9, 1"
                     AbsoluteLayout.LayoutFlags="SizeProportional"/>
 
-        <FlexLayout BindableLayout.ItemsSource="{Binding Products}"
-                    Direction="Column"
-                    HeightRequest="930"
-                    HorizontalOptions="Center"
-                    Wrap="Wrap">
-
-            <BindableLayout.ItemTemplate>
-
-                <DataTemplate>
-                    <pancake:PancakeView CornerRadius="10" 
-                                         Margin="10"
-                                         HeightRequest="270"
-                                         WidthRequest="160">
-                        <Grid>
-                        <BoxView 
-                                 BackgroundColor="{Binding HeroColor}"
-                                 />
-                    </Grid>
-                    </pancake:PancakeView>
-                </DataTemplate>
-
-            </BindableLayout.ItemTemplate>
-            
-        </FlexLayout>
+        
 
     </AbsoluteLayout>
     
