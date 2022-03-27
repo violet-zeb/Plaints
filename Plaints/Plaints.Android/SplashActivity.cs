@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Plaints.Droid
 {
-    [Activity(Label = "SplashActivity", MainLauncher=true, Theme ="@style/MyTheme.Splash", NoHistory =true)]
+    [Activity(Label = "SplashActivity", MainLauncher = true, Theme = "@style/MyTheme.Splash", NoHistory =true)]
     public class SplashActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -21,7 +21,6 @@ namespace Plaints.Droid
 
             // Create your application here
         }
-
         protected override async void OnResume()
         {
             base.OnResume();
