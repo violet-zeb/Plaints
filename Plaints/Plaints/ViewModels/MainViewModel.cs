@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Plaints.ViewModels
 {
-    public class MainViewModel : BaseViewModel
+    public class MainViewModel 
     {
         public IList<ProductViewModel> Products { get; set; }
 
