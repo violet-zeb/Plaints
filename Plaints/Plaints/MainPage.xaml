@@ -1,89 +1,99 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:Plaints.ViewModels"
-             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:viewmodels="clr-namespace:Plaints.ViewModels"
+	xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              x:Class="Plaints.MainPage">
-
     <ContentPage.BindingContext>
-        <viewmodels:MainViewModel/>
+        <viewmodels:MainViewModel />
     </ContentPage.BindingContext>
-    
-    
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Color x:Key="ButtonBackgroundColor">#ebf9f6</Color>
-            <Color x:Key="TextColor">#181d2a</Color>
-            
+            <Color x:Key="ButtonBackgroundColor">#e3f1eeff</Color>
             <Style TargetType="Label" x:Key="HeaderFontLight">
-                <Setter Property="FontFamily" Value="LoraRegular"/>
-                <Setter Property="FontSize" Value="28"/>
-                <Setter Property="TextColor" Value="#181d2a"></Setter>
+                <Setter Property="FontFamily" Value="LoraRegular" />
+                <Setter Property="FontSize" Value="28" />
+                <Setter Property="TextColor" Value="#181d2a" />
             </Style>
-
             <Style TargetType="Label" x:Key="HeaderFontMedium">
-                <Setter Property="FontFamily" Value="LoraMedium"/>
-                <Setter Property="FontSize" Value="28"/>
-                <Setter Property="TextColor" Value="#181d2a"></Setter>
+                <Setter Property="FontFamily" Value="LoraMedium" />
+                <Setter Property="FontSize" Value="28" />
+                <Setter Property="TextColor" Value="#181d2a" />
             </Style>
-
             <Style x:Key="ButtonStyle" TargetType="ImageButton">
-                <Setter Property="BackgroundColor" Value="#ebf9f6"/>
-                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="BackgroundColor" Value="#e3f1eeff" />
+                <Setter Property="CornerRadius" Value="10" />
             </Style>
-            
-
         </ResourceDictionary>
     </ContentPage.Resources>
-
-    <AbsoluteLayout>
-        <Label Text="Brown fox"></Label>
-        <ImageButton 
-                     Source="menu_icon" 
-                     AbsoluteLayout.LayoutBounds="20,20,48,48" 
-                     BackgroundColor="White" 
-                     Padding="10"/>
-        <ImageButton Source="favorite_empty"                     
-                     AbsoluteLayout.LayoutBounds="340,20,48,48"
+    <Grid Padding="20" ColumnSpacing="10" RowSpacing="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="50" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Brown fox" />
+        <ImageButton
+            Grid.Row="1"
+            Grid.Column="0"
+            Source="menu_icon"
+            BackgroundColor="White"
+            Padding="10" />
+        <ImageButton Grid.Row="1"
+                     Grid.Column="2"
+                     Source="favorite_empty"
                      Style="{StaticResource ButtonStyle}"
-                     Padding="10"/>
-
-        <StackLayout AbsoluteLayout.LayoutBounds="20,100,340,100">
-
-            <Label Style="{StaticResource HeaderFontLight}" Text="Choose your new friend"/>
+                     Padding="10" />
+        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0">
+            <Label Style="{StaticResource HeaderFontLight}" Text="Choose your new friend" />
             <Label Style="{StaticResource HeaderFontMedium}" Text="green friend" />
         </StackLayout>
-
-        
-        <BoxView AbsoluteLayout.LayoutBounds="20,200,300,48"
+        <BoxView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                  BackgroundColor="{StaticResource ButtonBackgroundColor}"
-                 CornerRadius="10"            
-                 />
-
-        <ImageButton AbsoluteLayout.LayoutBounds="20,200,48,48" 
+                 CornerRadius="10" />
+        <ImageButton Grid.Row="3" Grid.Column="0"
                      BackgroundColor="Transparent"
+                     HorizontalOptions="Start"
                      Style="{StaticResource ButtonStyle}"
                      Padding="14"
-                     Source="search_icon"
-                     />
-
-        <Entry AbsoluteLayout.LayoutBounds="60, 200, 240, 48"
-               Placeholder="Search"/>
-
-        <ImageButton AbsoluteLayout.LayoutBounds="340,200,48,48" 
-                     Style="{StaticResource ButtonStyle}"
-                     Padding="14"
-                     Source="settings_icon"
-                     />
-        <ScrollView Background="yellow"
-                    AbsoluteLayout.LayoutBounds="20, 300, .9, 1"
-                    AbsoluteLayout.LayoutFlags="SizeProportional"/>
-
-        
-
-    </AbsoluteLayout>
-    
-
+                     Source="search_icon" />
+        <Entry Grid.Row="3" Grid.Column="1" Margin="0,0,20,0" HorizontalOptions="Fill"
+               Placeholder="Search" />
+        <ImageButton
+			Grid.Row="3" Grid.Column="2" Style="{StaticResource ButtonStyle}"
+            Padding="14"
+            Source="settings_icon" />
+        <ScrollView Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
+            <FlexLayout BindableLayout.ItemsSource="{Binding Products}"
+			            Margin="5,0,5,0"
+			            Direction="Row"
+			            Wrap="Wrap"
+			            JustifyContent="SpaceBetween">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <pancake:PancakeView CornerRadius="10"
+                                             Margin="0,10,0,0"
+                                             WidthRequest="160"
+                                             HeightRequest="270">
+                            <!-- FlexLayout.Grow="1"> -->
+                            <Grid>
+                                <BoxView
+                                    BackgroundColor="{Binding HeroColor}" />
+                            </Grid>
+                        </pancake:PancakeView>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>
 
     
