@@ -1,4 +1,9 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Plaints.DataAccess;
+using Plaints.Service;
+using Plaints.Services;
+using Plaints.ViewModels;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 [assembly: ExportFont("Lora-Regular.ttf", Alias = "LoraRegular")]
@@ -8,12 +13,27 @@ namespace Plaints
 {
     public partial class App : Application
     {
+
+        private static ViewModelLocator _viewLocator;
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage { BindingContext = Locator.MainViewModel});
         }
+
+        internal static ViewModelLocator Locator
+        {
+            get
+            {
+                if (_viewLocator is null)
+                {
+                    _viewLocator = new ViewModelLocator();
+                }
+                return _viewLocator;
+            }
+        } 
+
 
         protected override void OnStart()
         {
@@ -25,6 +45,17 @@ namespace Plaints
 
         protected override void OnResume()
         {
+        }
+
+        private void SetupServices() 
+        { 
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddTransient<MainViewModel>();
+            serviceCollection.AddTransient<RecipeDetailsViewModel>();
+            serviceCollection.AddSingleton<INavigationService, NavigationService>();
+            serviceCollection.AddSingleton<IRecipeRepository, RecipeRepository>();
+
+
         }
     }
 }

@@ -6,5 +6,6 @@ namespace Plaints.Service
 {
     internal class ViewModelLocator
     {
+        public object MainViewModel { get; internal set; }
     }
 }
