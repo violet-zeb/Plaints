@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Plaints.Views;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace Plaints.Services
 {
@@ -8,7 +10,7 @@ namespace Plaints.Services
     {
         public void NavigateBack()
         {
-            
+            Application.Current.MainPage.Navigation.PopAsync();
         }
 
         public void NavigateToRecipeDetails()
@@ -18,7 +20,11 @@ namespace Plaints.Services
 
         public void NavigateToRecipeList()
         {
-            
+            var vm = App.Locator.RecipeListViewModel;
+            Application.Current
+                  .MainPage
+                  .Navigation
+                  .PushAsync(new RecipeListView { BindingContext = vm });
         }
     }
 }

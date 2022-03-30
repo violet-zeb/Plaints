@@ -17,6 +17,7 @@ namespace Plaints
         private static ViewModelLocator _viewLocator;
         public App()
         {
+            SetupServices();
             InitializeComponent();
 
             MainPage = new NavigationPage(new MainPage { BindingContext = Locator.MainViewModel});
