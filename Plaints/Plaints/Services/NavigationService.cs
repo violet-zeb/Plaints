@@ -18,9 +18,10 @@ namespace Plaints.Services
             
         }
 
-        public void NavigateToRecipeList()
+        public void NavigateToRecipeList(string category)
         {
             var vm = App.Locator.RecipeListViewModel;
+            vm.LoadRecipes(category);
             Application.Current
                   .MainPage
                   .Navigation

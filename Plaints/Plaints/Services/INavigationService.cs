@@ -6,7 +6,7 @@ namespace Plaints.Services
 {
     internal interface INavigationService
     {
-        void NavigateToRecipeList();
+        void NavigateToRecipeList(string category);
         void NavigateToRecipeDetails();
         void NavigateBack();
 

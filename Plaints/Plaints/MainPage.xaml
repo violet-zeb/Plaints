@@ -4,11 +4,9 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:viewmodels="clr-namespace:Plaints.ViewModels"
 	xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             x:Class="Plaints.MainPage">
-    <ContentPage.BindingContext>
-        <viewmodels:MainViewModel />
-    </ContentPage.BindingContext>
-    <ContentPage.Resources>
+    x:DataType="viewmodels:MainViewModel"
+    x:Class="Plaints.MainPage">
+        <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="ButtonBackgroundColor">#e3f1eeff</Color>
             <Style TargetType="Label" x:Key="HeaderFontLight">
@@ -78,7 +76,9 @@
             Padding="14"
             Source="settings_icon" />
 
-        <ImageButton x:Name="Breakfast" 
+        <ImageButton x:Name="Breakfast"  
+                     Command="{Binding NavigateToRecipeListCommand}"
+                     CommandParameter="Breakfast"
                      Grid.Row="4" 
                      Grid.ColumnSpan="2"
                      Source="pancake"
@@ -93,6 +93,8 @@
                VerticalOptions="Start"/>
 
         <ImageButton x:Name="Lunch" 
+                     Command="{Binding NavigateToRecipeListCommand}"
+                     CommandParameter="Lunch"
                      Grid.Row="4" 
                      Grid.ColumnSpan="2"
                      Grid.Column="2"
@@ -108,6 +110,8 @@
                VerticalOptions="Start"/>
         
         <ImageButton x:Name="Snack" 
+                     Command="{Binding NavigateToRecipeListCommand}"
+                     CommandParameter="Snack"
                      Grid.Row="5" 
                      Grid.ColumnSpan="2"
                      Source="guacamole"
@@ -122,6 +126,8 @@
                VerticalOptions="Start"/>
         
         <ImageButton x:Name="Dinner" 
+                     Command="{Binding NavigateToRecipeListCommand}"
+                     CommandParameter="Dinner"
                      Grid.Row="5" 
                      Grid.ColumnSpan="2"
                      Grid.Column="2"
