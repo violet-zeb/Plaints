@@ -28,11 +28,17 @@ namespace Plaints
             {
                 if (_viewLocator is null)
                 {
-                    _viewLocator = new ViewModelLocator();
+                    _viewLocator = new ViewModelLocator(ServiceProvider);
                 }
                 return _viewLocator;
             }
         } 
+
+        protected static IServiceProvider ServiceProvider
+        {
+            get;
+            set;
+        }
 
 
         protected override void OnStart()
@@ -52,10 +58,11 @@ namespace Plaints
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddTransient<MainViewModel>();
             serviceCollection.AddTransient<RecipeDetailsViewModel>();
+            serviceCollection.AddTransient<RecipeListViewModel>();
             serviceCollection.AddSingleton<INavigationService, NavigationService>();
             serviceCollection.AddSingleton<IRecipeRepository, RecipeRepository>();
-
-
+            
+            ServiceProvider = serviceCollection.BuildServiceProvider();
         }
     }
 }
