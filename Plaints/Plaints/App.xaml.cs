@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plaints.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 [assembly: ExportFont("Lora-Regular.ttf", Alias = "LoraRegular")]

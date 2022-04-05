@@ -2,37 +2,57 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Plaints.Views.RecipeListView">
-    <ContentPage.Content>
-        <StackLayout>
-            <CollectionView ItemsSource="{Binding Recipe}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Padding="10">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Image Grid.RowSpan="2"
-                       Source="{Binding favorite_empty}"
-                       Aspect="AspectFill"
-                       HeightRequest="60"
-                       WidthRequest="60" />
-                            <Label Grid.Column="1"
-                       Text="{Binding Name}"
-                       FontAttributes="Bold" />
-                            <Label Grid.Row="1"
-                       Grid.Column="1"
-                       Text="{Binding Title}"
-                       FontAttributes="Italic"
-                       VerticalOptions="End" />
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </StackLayout>
-    </ContentPage.Content>
+    <ListView
+        BackgroundColor="Transparent"
+        CachingStrategy="RecycleElement"
+        GroupDisplayBinding="{Binding Id}"
+        HasUnevenRows="True"
+        IsGroupingEnabled="True"
+        IsPullToRefreshEnabled="True"
+        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+        ItemsSource="{Binding Id}"
+        RefreshCommand="{Binding RefreshComand}"
+        RefreshControlColor="Red"
+        SelectedItem="{Binding SelectedMeal, Mode=TwoWay}"
+        SeparatorVisibility="None">
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="model:Recipe">
+                <ViewCell>
+                    <ViewCell.ContextActions>
+                        <MenuItem
+                            Command="{Binding Source={x:Reference MainPage}, Path=BindingContext.Favourite}"
+                            CommandParameter="{Binding .}"
+                            Text="Favorite"/>
+                        <MenuItem IsDestructive="True" Text="Delete"/>
+                    </ViewCell.ContextActions>
+                    <Grid Padding="10">
+                        <Frame CornerRadius="20" HasShadow="True"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding Image}" WidthRequest="66"/>
+                            <StackLayout VerticalOptions="Center">
+                                <Label
+                                    FontSize="Large"
+                                    Text="{Binding Name}"
+                                    VerticalOptions="Center"/>
+                                <Label
+                                    FontSize="Large"
+                                    Text="{Binding ShortDescription}"
+                                    VerticalOptions="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        <ListView.Header>
+            <StackLayout Orientation="Horizontal">
+                <Label HorizontalOptions="Center" Text="PlateBox team"/>
+            </StackLayout>
+        </ListView.Header>
+        <!--<ListView.Footer>
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                <Button Text="Load more" Command="LoadMoreCommand"/> still not made command
+            </StackLayout>
+        </ListView.Footer>-->
+    </ListView>
 </ContentPage>
