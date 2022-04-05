@@ -7,6 +7,10 @@ namespace Plaints.Models
 {
     public class Ingredients
     {
+        internal string name;
+        internal string unit;
+        internal string amount;
+
         [JsonProperty("name")]
         public string Name { get; set; }
 
