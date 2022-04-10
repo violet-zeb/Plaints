@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Plaints.ViewModels;assembly=Plaints"
+             xmlns:items="clr-namespace:Plaints.ViewModels.Items;assembly=Plaints"
+             x:Class="Plaints.Views.RecipeListView"
+             x:DataType="viewModels:RecipeListViewModel">
+    <ContentPage.Resources>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView ItemsSource="{Binding Recipe}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SelectedRecipe}"
+                            SelectionChangedCommand="{Binding SelectedRecipeChangedCommand}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate  x:DataType="items:RecipeItemViewModel">
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.RowSpan="2"
+                                   Source="{Binding ImageName}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="120"
+                                   WidthRequest="120" />
+                            <Label Grid.Row="0" 
+                                   Grid.Column="1"
+                                   Text="{Binding Name}"
+                                   FontAttributes="Bold" />
+                            <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="{Binding  ShortDescription}"
+                                   FontAttributes="Italic"
+                                   VerticalOptions="Start" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

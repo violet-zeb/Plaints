@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:xyt="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:viewModels="clr-namespace:Plaints.ViewModels;assembly=Plaints"
+             xmlns:items="clr-namespace:Plaints.ViewModels.Items;assembly=Plaints"
+             x:DataType="viewModels:RecipeDetailsViewModel"
+             x:Class="Plaints.Views.RecipeDetailsView">
+
+    <ContentPage.Resources>
+
+        <ResourceDictionary>
+
+            <ControlTemplate x:Key="CustomTab">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                    <Label Text="{TemplateBinding Text}"
+                           HorizontalOptions="CenterAndExpand" FontSize="18"
+                           VerticalOptions="CenterAndExpand" Grid.Row="0"
+                           TextColor="{TemplateBinding CurrentTextColor}" />
+                    
+                    <BoxView Color="#fe6a34" HeightRequest="10" WidthRequest="10" Grid.Row="1"
+                             HorizontalOptions="CenterAndExpand"
+                             VerticalOptions="CenterAndExpand" 
+                             CornerRadius="10"
+                             IsVisible="{TemplateBinding IsSelected}" />
+
+
+                </Grid>
+
+            </ControlTemplate>
+
+
+            <Style
+                x:Key="CustomTabStyle"
+                TargetType="xyt:TabView">
+
+                <Setter Property="IsTabTransitionEnabled"
+                        Value="true" />
+                <Setter Property="TabStripHeight"
+                        Value="52" />
+                <Setter Property="TabContentBackgroundColor"
+                        Value="#484848" />
+                <Setter Property="TabStripPlacement"
+                        Value="Bottom" />
+
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout VerticalOptions="FillAndExpand">
+                <Grid>
+                    <Frame Padding="0" 
+                           HeightRequest="400" 
+                           BackgroundColor="Black">
+                        <Image Opacity="0.7" 
+                               Source="{Binding BackgroundImage}" 
+                               Aspect="AspectFill" />
+                    </Frame>
+                    <StackLayout VerticalOptions="EndAndExpand" 
+                                 Margin="15,15,15,70">
+                        <Grid>
+                            <Label Text="{Binding Name}" 
+                                   Grid.Column="0"
+                                   TextColor="White" 
+                                   FontSize="28" 
+                                   FontAttributes="None" />
+                        </Grid>
+
+                    </StackLayout>
+                </Grid>
+
+                <Grid VerticalOptions="FillAndExpand" Margin="0,-30,0,0" Padding="0">
+                    <Frame CornerRadius="10">
+                        <Grid>
+                            <xyt:TabView Style="{StaticResource CustomTabStyle}">
+                                
+                                <xyt:TabViewItem ControlTemplate="{StaticResource CustomTab}"
+                                                 Text="Overview" 
+                                                 TextColorSelected="#ff6a3b">
+                                    <StackLayout BackgroundColor="White">
+                                        <ScrollView>
+                                            <Label Text="{Binding LongDescription}"
+                                                   FontSize="22" 
+                                                   TextColor="Black" />
+                                        </ScrollView>
+                                    </StackLayout>
+                                </xyt:TabViewItem>
+
+                                <xyt:TabViewItem ControlTemplate="{StaticResource CustomTab}"
+                                                 Text="Ingredients" 
+                                                 TextColorSelected="#ff6a3b">
+                                    <Grid Background="White" >
+                                        <CollectionView ItemsSource="{Binding Ingredients}">
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate x:DataType="items:IngredientItemViewModel">
+                                                    <Grid Margin="0,0,0,5" ColumnDefinitions="40, *">
+                                                        <BoxView Color="Black"
+                                                                 Margin="0,10,0,0"
+                                                                 HeightRequest="10"
+                                                                 WidthRequest="10" 
+                                                                 Grid.Column="0"
+                                                                 HorizontalOptions="CenterAndExpand"
+                                                                 VerticalOptions="Start" 
+                                                                 CornerRadius="10" />    
+                                                        <Label Grid.Column="1" FontSize="22" Text="{Binding Ingredient}"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </Grid>
+                                </xyt:TabViewItem>
+                                
+                                <xyt:TabViewItem ControlTemplate="{StaticResource CustomTab}"
+                                                 Text="Steps" 
+                                                 TextColorSelected="#ff6a3b">
+                                    <Grid Background="White" >
+                                        <CollectionView ItemsSource="{Binding Steps}">
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate x:DataType="items:RecipeStepItemViewModel">
+                                                    <Grid Margin="0,0,0,10" ColumnDefinitions="40, *">
+                                                        <BoxView Color="Black"
+                                                                 Margin="0,10,0,0"
+                                                                 HeightRequest="10"
+                                                                 WidthRequest="10" 
+                                                                 Grid.Column="0"
+                                                                 HorizontalOptions="CenterAndExpand"
+                                                                 VerticalOptions="Start" 
+                                                                 CornerRadius="10" />                
+                                                        <Label Grid.Column="1" FontSize="22" Text="{Binding Text}"/>
+                                                        <Image Source="{Binding Image}"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </Grid>
+                                </xyt:TabViewItem>
+                                
+                            </xyt:TabView>
+                        </Grid>
+
+
+                    </Frame>
+                    <!--
+                    <pancake:PancakeView CornerRadius="50" BackgroundColor="White" HeightRequest="75"
+                                         WidthRequest="75" HorizontalOptions="EndAndExpand"
+                                         Padding="5" Margin="15,-35,20,15" VerticalOptions="Start">
+                        <pancake:PancakeView.Shadow>
+                            <pancake:DropShadow Color="Black" BlurRadius="15" Offset="0,0" />
+                        </pancake:PancakeView.Shadow>
+                        <Image Source="save3.png" Aspect="AspectFit" Margin="19" />
+
+                    </pancake:PancakeView>
+                    -->
+
+                </Grid>
+
+            </StackLayout>
+
+        </Grid>
+
+
+    </ContentPage.Content>
+
+
+</ContentPage>
