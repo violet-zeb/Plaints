@@ -55,7 +55,10 @@
                      Padding="10" />
         
         <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0">
-            <Label Style="{StaticResource HeaderFontLight}" Text="PlateBox" FontSize="55"/>
+            <Label 
+                Style="{StaticResource HeaderFontLight}" 
+                Text="PlateBox" 
+                FontSize="55"/>
         </StackLayout>
         
         <BoxView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
@@ -69,8 +72,14 @@
                      Padding="14"
                      Source="search_icon" />
         
-        <Entry Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="1" Margin="0,0,20,0" HorizontalOptions="Fill"
-               Placeholder="Search" />
+        <Entry Grid.Row="3" 
+               Grid.ColumnSpan="2" 
+               Grid.Column="1" 
+               Margin="0,0,20,0" 
+               HorizontalOptions="Fill"
+               Placeholder="Search"
+               PlaceholderColor="#181d2a"
+               TextColor="#181d2a"/>
 
         <ImageButton
 			Grid.Row="3" Grid.Column="3" Style="{StaticResource ButtonStyle}"
@@ -87,7 +96,9 @@
         <Label Grid.Row="4" 
                Grid.ColumnSpan="2" 
                Grid.Column="0"
+               Style="{StaticResource HeaderFontLight}"
                Text="Breakfast" 
+               TextColor="#181d2a"
                FontSize="30"
                InputTransparent="True"
                HorizontalTextAlignment="Center"
@@ -104,6 +115,7 @@
         <Label Grid.Row="4" 
                Grid.ColumnSpan="2" 
                Grid.Column="2"
+               Style="{StaticResource HeaderFontLight}"
                Text="Lunch" 
                FontSize="30" 
                InputTransparent="True"
@@ -120,6 +132,7 @@
         <Label Grid.Row="5" 
                Grid.ColumnSpan="2" 
                Grid.Column="0"
+               Style="{StaticResource HeaderFontLight}"
                Text="Snack" 
                FontSize="30" 
                InputTransparent="True"
@@ -137,6 +150,7 @@
         <Label Grid.Row="5" 
                Grid.ColumnSpan="2"
                Grid.Column="2"
+               Style="{StaticResource HeaderFontLight}"
                Text="Dinner" 
                FontSize="30" 
                InputTransparent="True"

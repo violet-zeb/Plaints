@@ -5,8 +5,18 @@
              xmlns:viewModels="clr-namespace:Plaints.ViewModels;assembly=Plaints"
              xmlns:items="clr-namespace:Plaints.ViewModels.Items;assembly=Plaints"
              x:Class="Plaints.Views.RecipeListView"
-             x:DataType="viewModels:RecipeListViewModel"
-             NavigationPage.HasNavigationBar="false">
+             x:DataType="viewModels:RecipeListViewModel">
+    <NavigationPage.TitleView>
+        <StackLayout 
+            Orientation="Horizontal" 
+            VerticalOptions="Center" 
+            Spacing="10">
+            <Label 
+                HorizontalOptions="Center" 
+                Text="{Binding CategoryName}"
+                FontSize="Large"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
     <ContentPage.Resources>
     </ContentPage.Resources>
     <ContentPage.Content>
