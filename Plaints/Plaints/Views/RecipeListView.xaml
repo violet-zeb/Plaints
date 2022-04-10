@@ -5,7 +5,8 @@
              xmlns:viewModels="clr-namespace:Plaints.ViewModels;assembly=Plaints"
              xmlns:items="clr-namespace:Plaints.ViewModels.Items;assembly=Plaints"
              x:Class="Plaints.Views.RecipeListView"
-             x:DataType="viewModels:RecipeListViewModel">
+             x:DataType="viewModels:RecipeListViewModel"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.Resources>
     </ContentPage.Resources>
     <ContentPage.Content>

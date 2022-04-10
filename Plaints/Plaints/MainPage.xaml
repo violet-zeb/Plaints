@@ -5,7 +5,8 @@
 	xmlns:viewmodels="clr-namespace:Plaints.ViewModels"
 	xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     x:DataType="viewmodels:MainViewModel"
-    x:Class="Plaints.MainPage">
+    x:Class="Plaints.MainPage"
+    NavigationPage.HasNavigationBar="false">
         <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="ButtonBackgroundColor">#e3f1eeff</Color>
