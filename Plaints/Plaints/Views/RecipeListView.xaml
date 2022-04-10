@@ -20,7 +20,8 @@
     <ContentPage.Resources>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout
+            BackgroundColor="LightCoral">
             <CollectionView ItemsSource="{Binding Recipe}"
                             SelectionMode="Single"
                             SelectedItem="{Binding SelectedRecipe}"
