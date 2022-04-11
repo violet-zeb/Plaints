@@ -57,7 +57,7 @@
         <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0">
             <Label 
                 Style="{StaticResource HeaderFontLight}" 
-                Text="PlateBox" 
+                Text="Plaints" 
                 FontSize="55"/>
         </StackLayout>
         
