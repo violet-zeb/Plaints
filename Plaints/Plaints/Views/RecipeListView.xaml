@@ -45,12 +45,14 @@
                             <Label Grid.Row="0" 
                                    Grid.Column="1"
                                    Text="{Binding Name}"
-                                   FontAttributes="Bold" />
+                                   FontAttributes="Bold" 
+                                   MaxLines="5"/>
                             <Label Grid.Row="1"
                                    Grid.Column="1"
                                    Text="{Binding  ShortDescription}"
                                    FontAttributes="Italic"
-                                   VerticalOptions="Start" />
+                                   VerticalOptions="Start" 
+                                   MaxLines="5"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
