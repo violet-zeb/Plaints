@@ -5,31 +5,13 @@
 	xmlns:viewmodels="clr-namespace:Plaints.ViewModels"
 	xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     x:DataType="viewmodels:MainViewModel"
-    x:Class="Plaints.MainPage">
-        <ContentPage.Resources>
-        <ResourceDictionary>
-            <Color x:Key="ButtonBackgroundColor">#e3f1eeff</Color>
-            <Style TargetType="Label" x:Key="HeaderFontLight">
-                <Setter Property="FontFamily" Value="LoraRegular" />
-                <Setter Property="FontSize" Value="28" />
-                <Setter Property="TextColor" Value="#181d2a" />
-            </Style>
-            <Style TargetType="Label" x:Key="HeaderFontMedium">
-                <Setter Property="FontFamily" Value="LoraMedium" />
-                <Setter Property="FontSize" Value="28" />
-                <Setter Property="TextColor" Value="#181d2a" />
-            </Style>
-            <Style x:Key="ButtonStyle" TargetType="ImageButton">
-                <Setter Property="BackgroundColor" Value="#e3f1eeff" />
-                <Setter Property="CornerRadius" Value="10" />
-            </Style>
-            <Style x:Key="ImageButtonStyle" TargetType="ImageButton">
-                <Setter Property="BackgroundColor" Value="LightGray" />
-                <Setter Property="CornerRadius" Value="10" />
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <Grid Padding="20" ColumnSpacing="10" RowSpacing="20" BackgroundColor="#EA6036">
+    x:Class="Plaints.MainPage"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarIsVisible="False">
+        
+
+
+    <!--<Grid Padding="20" ColumnSpacing="10" RowSpacing="20" BackgroundColor="#EA6036">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="50" />
@@ -52,22 +34,22 @@
                      Style="{StaticResource ButtonStyle}"
                      BackgroundColor="#EA6036"
                      Padding="10" />
-        
+
         <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0">
             <Label Style="{StaticResource HeaderFontLight}" Text="PlateBox" FontSize="55"/>
         </StackLayout>
-        
+
         <BoxView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
                  BackgroundColor="{StaticResource ButtonBackgroundColor}"
                  CornerRadius="10" />
-        
+
         <ImageButton Grid.Row="3" Grid.Column="0"
                      BackgroundColor="Transparent"
                      HorizontalOptions="Start"
                      Style="{StaticResource ButtonStyle}"
                      Padding="14"
                      Source="search_icon" />
-        
+
         <Entry Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="1" Margin="0,0,20,0" HorizontalOptions="Fill"
                Placeholder="Search" />
 
@@ -108,7 +90,7 @@
                InputTransparent="True"
                HorizontalTextAlignment="Center"
                VerticalOptions="Start"/>
-        
+
         <ImageButton x:Name="Snack" 
                      Command="{Binding NavigateToRecipeListCommand}"
                      CommandParameter="Snack"
@@ -124,7 +106,7 @@
                InputTransparent="True"
                HorizontalTextAlignment="Center"
                VerticalOptions="Start"/>
-        
+
         <ImageButton x:Name="Dinner" 
                      Command="{Binding NavigateToRecipeListCommand}"
                      CommandParameter="Dinner"
@@ -141,7 +123,239 @@
                InputTransparent="True"
                HorizontalTextAlignment="Center"
                VerticalOptions="Start"/>
-    </Grid>
+    </Grid>-->
+
+
+
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ExBoldLabel" TargetType="Label">
+                --><!--<Setter Property="FontFamily" Value="GilroyEB" />--><!--
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+            <Style x:Key="LightLabel" TargetType="Label">
+                --><!--<Setter Property="FontFamily" Value="GilroyL" />--><!--
+                <Setter Property="TextColor" Value="DarkGray" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ExBoldLabel" TargetType="Label">
+                <!--<Setter Property="FontFamily" Value="GilroyEB" />-->
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+            <Style x:Key="LightLabel" TargetType="Label">
+                <!--<Setter Property="FontFamily" Value="GilroyL" />-->
+                <Setter Property="TextColor" Value="DarkGray" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="32" BackgroundColor="#dededd">
+                <StackLayout.Resources>
+                    <ResourceDictionary>
+                        <Style x:Key="ButtonStyle" TargetType="ImageButton">
+                            <Setter Property="BackgroundColor" Value="#e3f1eeff" />
+                            <Setter Property="CornerRadius" Value="30" />
+                        </Style>
+                        <Style x:Key="ImageButtonStyle" TargetType="ImageButton">
+                            <Setter Property="BackgroundColor" Value="LightGray" />
+                            <Setter Property="CornerRadius" Value="10" />
+                        </Style>
+                    </ResourceDictionary>
+                </StackLayout.Resources>
+
+                <StackLayout
+                    Margin="0,6"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal">
+                    <Image
+                        HorizontalOptions="Start"
+                        Source="icon_menu.png"
+                        WidthRequest="20" />
+                    <Image
+                        HorizontalOptions="EndAndExpand"
+                        Source="icon_cart.png"
+                        WidthRequest="26" />
+                </StackLayout>
+
+                <StackLayout Margin="0,32,0,16" Spacing="-4">
+                    <Label
+                        FontSize="35"
+                        Style="{StaticResource ExBoldLabel}"
+                        Text="Plaints" />
+                    <Label
+                        FontSize="20"
+                        Style="{StaticResource LightLabel}"
+                        Text="Start cooking today" />
+                </StackLayout>
+
+                <Grid Margin="0,16,0,30" ColumnSpacing="20">
+                    <Grid.Resources>
+                        <ResourceDictionary>
+                            <Style TargetType="BoxView">
+                                <Setter Property="WidthRequest" Value="52" />
+                                <Setter Property="HeightRequest" Value="52" />
+                                <Setter Property="HorizontalOptions" Value="Center" />
+                                <Setter Property="BackgroundColor" Value="White" />
+                                <Setter Property="VerticalOptions" Value="Center" />
+                                <Setter Property="CornerRadius" Value="26" />
+                            </Style>
+
+                        </ResourceDictionary>
+                    </Grid.Resources>
+
+                    <Entry Grid.ColumnSpan="3" Grid.Column="0"  HorizontalOptions="Fill" Placeholder="Search" />
+
+                    <BoxView Grid.Column="3" BackgroundColor="#3d9165" />
+                    
+                    
+                    <Label
+                        Grid.Column="3"
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        Text="All"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                </Grid>
+
+                <Grid
+                    ColumnDefinitions="*, *"
+                    ColumnSpacing="28"
+                    VerticalOptions="FillAndExpand">
+                    <Grid Grid.Column="0" RowSpacing="28">
+                        <ImageButton Grid.Row="0" HeightRequest="248" x:Name="Breakfast"  Command="{Binding NavigateToRecipeListCommand}" CommandParameter="Breakfast" Source="pancake" Style="{StaticResource ButtonStyle}"/>
+                        <Image
+                            Grid.Row="0"
+                            Margin="8"
+                            Source="item1.png"
+                            VerticalOptions="Start" />
+                        <Grid
+                            Grid.Row="0"
+                            Margin="20,32,20,16"
+                            RowDefinitions="*,*,*"
+                            RowSpacing="-2"
+                            VerticalOptions="End">
+                            <Label
+                                Grid.Row="2"
+                                FontAttributes="Bold"
+                                FontSize="25"
+                                Style="{StaticResource ExBoldLabel}"
+                                Text="Breakfast" />
+                            
+                        </Grid>
+
+                        <ImageButton Grid.Row="1" HeightRequest="248" x:Name="Snack" Command="{Binding NavigateToRecipeListCommand}" CommandParameter="Snack" Source="guacamole" Style="{StaticResource ButtonStyle}" />
+                        <Image
+                            Grid.Row="1"
+                            Margin="8"
+                            Source="item3.png"
+                            VerticalOptions="Start" />
+                        <Grid
+                            Grid.Row="1"
+                            Margin="20,32,20,16"
+                            RowDefinitions="*,*,*"
+                            RowSpacing="-2"
+                            VerticalOptions="End">
+                            <Label
+                                Grid.Row="2"
+                                FontAttributes="Bold"
+                                FontSize="25"
+                                Style="{StaticResource ExBoldLabel}"
+                                Text="Snack" 
+                                HorizontalOptions="Start"/>
+                            
+                        </Grid>
+
+                    </Grid>
+                    <Grid
+                        Grid.Column="1"
+                        HeightRequest="400"
+                        RowDefinitions="*, *, Auto"
+                        RowSpacing="28">
+                        <ImageButton Grid.Row="0" HeightRequest="210" x:Name="Lunch" Command="{Binding NavigateToRecipeListCommand}" CommandParameter="Lunch" Source="lasagna" Style="{StaticResource ButtonStyle}"/>
+                        <Image
+                            Grid.Row="0"
+                            Margin="8,-2,8,8"
+                            Source="item2.png"
+                            VerticalOptions="Start" />
+                        <Grid
+                            Grid.Row="0"
+                            Margin="20,32,20,16"
+                            RowDefinitions="*,*,*"
+                            RowSpacing="-6"
+                            VerticalOptions="End">
+                            <Label
+                                Grid.Row="2"
+                                FontAttributes="Bold"
+                                FontSize="25"
+                                Style="{StaticResource ExBoldLabel}"
+                                Text="Lunch" />
+                            
+                            
+                        </Grid>
+
+                        <ImageButton Grid.Row="1" HeightRequest="220" x:Name="Dinner" Command="{Binding NavigateToRecipeListCommand}" CommandParameter="Dinner" Source="wrap" Style="{StaticResource ButtonStyle}" />
+                        <Image
+                            Grid.Row="1"
+                            Margin="8,-4,8,8"
+                            Source="item4.png"
+                            VerticalOptions="Start" />
+                        <Grid
+                            Grid.Row="1"
+                            Margin="20,32,20,16"
+                            RowDefinitions="*,*,*"
+                            RowSpacing="-6"
+                            VerticalOptions="End">
+                            <Label
+                                Grid.Row="2"
+                                FontAttributes="Bold"
+                                FontSize="25"
+                                Style="{StaticResource ExBoldLabel}"
+                                Text="Dinner" />
+                           
+                        </Grid>
+
+                        <BoxView
+                            Grid.Row="2"
+                            BackgroundColor="#3d9165"
+                            CornerRadius="23"
+                            HeightRequest="46" />
+                        <Label
+                            Grid.Row="2"
+                            Margin="20,0"
+                            FontAttributes="Bold"
+                            FontSize="15"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource ExBoldLabel}"
+                            Text="Plaints Team"
+                            TextColor="White"
+                            VerticalOptions="Center" />
+                        
+
+                        
+                        <!--<Label
+                            Grid.Row="2"
+                            Margin="20,0"
+                            FontAttributes="Bold"
+                            FontSize="12"
+                            HorizontalOptions="End"
+                            Text="&#xf852;"
+                            TextColor="#3d9165"
+                            VerticalOptions="Center" />-->
+                        
+                    </Grid>
+                    
+                    
+                </Grid>
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>
 
     
